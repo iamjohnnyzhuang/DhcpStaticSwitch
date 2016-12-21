@@ -12,9 +12,9 @@ goto choice
 @echo off 
 
 echo "Setting Static IP Information" 
-netsh interface ip set address "Wi-Fi" static 192.168.1.17 255.255.255.0 192.168.1.251 1 
-netsh interface ipv4 set dns "Wi-Fi" static 8.8.8.8
-netsh interface ipv4 set dns "Wi-Fi" 8.8.4.4 index=2
+netsh interface ip set address "WLAN" static 10.8.149.230 255.255.248.0 10.8.144.51 1 
+netsh interface ipv4 set dns "WLAN" static 192.168.50.89
+netsh interface ip add dnsservers name="WLAN" address=192.168.50.88 index=2
 netsh int ip show config
 pause 
 goto end
@@ -22,8 +22,8 @@ goto end
 :B 
 @ECHO OFF 
 ECHO Resetting IP Address and Subnet Mask For DHCP 
-netsh int ip set address name = "Wi-Fi" source = dhcp
-netsh interface ipv4 set dns "Wi-Fi" dhcp
+netsh int ip set address name = "WLAN" source = dhcp
+netsh interface ipv4 set dns "WLAN" dhcp
 
 ipconfig /renew
 
